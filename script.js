@@ -21,16 +21,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 	for(let i = 0; i < numberOfRectangles; i++) {
+		const totalWidth = BarWidth * numberOfRectangles;
 		const rectangle = document.createElement('div');
 		rectangle.classList.add('rectangle');
-		rectangle.style.left = `calc(50% + ${i * BarWidth}px)`;
+		rectangle.style.left = `calc(50% + ${i * BarWidth}px - ${totalWidth / 2}px)`;
 		centerElement.appendChild(rectangle);
 		rectangle.dataset.index = i;
 
 		const label = document.createElement('div');
 		label.classList.add('label');
 		label.textContent = terms[i];
-		label.style.left = `calc(50% + ${i * BarWidth}px)`;
+		label.style.left = `calc(50% + ${i * BarWidth}px - ${totalWidth / 2}px)`;
 		centerElement.appendChild(label);
 
 	}
@@ -44,10 +45,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const horizontalRectangle = document.createElement('div');
     horizontalRectangle.classList.add('horizontal-rectangle');
-    centerElement.appendChild(horizontalRectangle);
+    //centerElement.appendChild(horizontalRectangle);
 
-    const line = document.querySelector('.line');
-    line.style.width = `${numberOfRectangles * 50}px`;
+    //const line = document.querySelector('.line');
+    //line.style.width = `${numberOfRectangles * 10}px`;
 
     horizontalRectangle.style.backgroundImage = `linear-gradient(to right, ${colorStops.map(color => `hsl(${color.h}, ${color.s}%, ${color.l}%)`).join(', ')})`;
 
@@ -79,13 +80,14 @@ document.addEventListener("DOMContentLoaded", function () {
         document.querySelectorAll('.rectangle').forEach(rectangle => {
             const bgImage = window.getComputedStyle(rectangle).backgroundImage;
             const colorStopMatch = bgImage.match(/(\d+(?:\.\d+)?)%/);
+			
             
             const li = document.createElement('li');
             if (colorStopMatch) {
                 const value = 1 - (parseFloat(colorStopMatch[1]) / 100);  // Adjusted line
                 li.textContent = value.toFixed(2);
             } else {
-                li.textContent = '1.00';
+                li.textContent = '0.00';
             }
             rectangleValuesList.appendChild(li);
         });
