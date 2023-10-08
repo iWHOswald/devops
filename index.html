@@ -7,15 +7,35 @@
     <title>Dynamic Rectangles</title>
 </head>
 <body>
-	<button id="getValuesButton">Get Values</button>
-	<ul id="rectangleValues"></ul>
+	<h1 class="title">Abstrax Sensory Analysis Questionnaire</h1>
 
-    <div class="center">
-		<img id="dynamicImage" src="test.png" alt="Dynamic Image">
+	<div class="input-container">
+		<div class="input-field">
+			<label for="sampleName">Sample name: </label>
+			<input type="text" id="sampleName" name="sampleName">
+		</div>
+		
+		<div class="input-field">
+			<label for="matrix">Matrix: </label>
+			<select id="matrix" name="matrix">
+				<option value="flower">Flower</option>
+				<option value="rosin">Rosin</option>
+				<option value="hte">HTE</option>
+				<option value="terpenes">Terpenes</option>
+				<option value="blend">Blend</option>
+			</select>
+		</div>
 
-        <div class="line"></div>
-    </div>
+		<div class="input-field">
+			<label for="user">User: </label>
+			<input type="text" id="user" name="user">
+		</div>
+	</div>
 
-    <script src="script.js"></script>
+		<div class="center">
+			<img id="dynamicImage" src="test.png" alt="Dynamic Image">
+			<div class="line"></div>
+		</div>
+		<script src="script.js"></script>
 </body>
 </html>
